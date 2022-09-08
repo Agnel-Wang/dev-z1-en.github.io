@@ -10,6 +10,6 @@ readme_index:
 
 exclude:
   - Makefile
-  # - CNAME
+  - CNAME
   - Gemfile
   - Gemfile.lock
