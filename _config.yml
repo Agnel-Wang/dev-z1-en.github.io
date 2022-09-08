@@ -1,0 +1,15 @@
+#theme: jekyll-theme-slate
+title: unitree-docs
+lang: en
+description: 宇树科技Z1机械臂文档
+
+remote_theme: rundocs/jekyll-rtd-theme
+
+readme_index:
+  with_frontmatter: true
+
+exclude:
+  - Makefile
+  # - CNAME
+  - Gemfile
+  - Gemfile.lock
