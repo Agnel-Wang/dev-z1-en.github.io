@@ -1,9 +1,9 @@
 ---
 sort: 3
 ---
-# 有限状态机
+# Finite-state Machine
 
-机械臂的一个状态机，即对应着一个功能。z1机械臂的状态机说明如下表格：
+The state machine of robotic arm corresponds to a certain function. The state machine specification of Z1 robotic arm is shown as follows: 
 
 |State|KeySwitch|Switchable|
 |:-:|:-:|:-:|
@@ -20,23 +20,23 @@ sort: 3
 |TOSTATE|0|automatically switched to 2|
 |CALIBRATION|=|automatically switched to 1|
 
-在键盘控制模式下，按下某个键位就可以进入该状态机，在Switchable列表下为从某一状态机下可以进入的其他状态机。
+In keyboard control mode, you can enter the state machine by pressing a key. Under the Switchable list, you can find another state machine which can be accessed through a certain state machine.
 
-**为了避免奇异问题，我们建议用户每次使用时先将机械臂通过TOSTAET状态机运行至forward位姿下。**
+**To avoid singular problems, it is recommended that running the robotic arm to the forward pose through TOSTAET state machine before use.**
 
 ## BACKTOSTART
 
-所有电机返回初始位置
+All motors return to initial positions.
 
 ## PASSIVE
 
-所有电机进入阻尼状态（上电后的默认状态）
+All motors get into passive state(default state after power on).
 
 ## JOINTCTRL
 
-在关节空间速度控制中，可以通过**长按**键盘直接地给定机械臂6个关节运动的速度，从而控制机械臂的运动。
+When controlling the joint space speed, the six joints of robotic arm can be directly given by long pressing the keyboard and thus to control the movement of the robot arm.
 
-需要再次说明的是，所有关节坐标系均是右手系，在使用前需注意个关节的正反转运动趋势，以确保安全操作。
+It should be noted again that all joint coordinate systems are right-handed, and we should pay attention to the forward and reverse movement trend of each joint before use to ensure safe operation.
 
 <table border="1">
     <tr>
@@ -60,7 +60,7 @@ sort: 3
 
 ## CARTESIAN
 
-在笛卡尔空间控制中，可以直接地通过键盘或手柄给定机械臂末端的期望位置与姿态的运动速度，进而控制机械臂的运动。
+In Cartesian space control, the movement speed of expected place and posture for the end of robot arm can be given by directly through the keyboard or handle, and thus to control the movement of the robotic arm.
 
 <table border="1">
     <tr>
@@ -76,62 +76,58 @@ sort: 3
 
 ## MOVEJ、MOVEL、MOVEC
 
-根据提示输入，可以是具体点的坐标(roll pitch yaw x y z)，也可以是标签名。
+Input according to the prompt, it can be the coordinates of the specific point (roll pitch yaw x y z) or the label name.
 
-点的坐标可以先通过关节控制移动到目标位置，然后通过savestate状态机保存至csv文件或调用getJointState可执行文件获取。
+The coordinates of the points can be moved to the target position through joint control, and then saved to "csv" file through the "savestate" state machine or obtained by calling the "getJointState" executable file.
 
-示例：
+Example:
 
-1. 先将机械臂运行至forward状态
+1. First run the robotic arm to the "forward" pose
 
-    按0， 输入forward后enter
+    Press 0, input forward, then click Enter
 
 2. MOVEJ
 
-    按4， 输入0.5 0.1 0.1 0.5 -0.2 0.5
+    Press 4, input 0.5 0.1 0.1 0.5 -0.2 0.5
 
-    请确保输入正确，之后按两次enter，机械臂开始运动
+    Please make sure the input is correct, and click Enter twice, then the robotic arm starts to move.
 
-    注：两次enter的目的是：在键盘控制时，我们允许用户在按一次enter后继续输入下一次位姿，完成输入后按两次enter顺序执行
+    Note: The purpose of clicking Enter twice: When controlling the keyboard, the user is allowed to continually input the next pose after clicking Enter. Once you finish the input, click Enter twice, it will execute in order.
 
 3. MOVEL
 
-    按5， 输入0 0 0 0.45 -0.2 0.2后按两次enter
+    Press 5, input 0 0 0 0.45 -0.2 0.2, then click Enter twice.
 
 4. MOVEC
 
-    按6，此时需要输入两次位姿，分别是中间位姿和最终位姿。
+    Press 6, input two poses, the intermediate pose, and the final pose. 
 
-    输入0 0.2 0 0.4 0 0.3后enter，再输入0 -0.1 0.5 0.5 0.25 0.44后按两次enter
-
-有关该示例的程序实现详见bigDemo
+    Input 0 0.2 0 0.4 0 0.3 and then click Enter, then input 0 -0.1 0.5 0.5 0.25 0.44 and click Enter twice. The sample program details, please find in the bigDemo example.
 
 ## TEACH
 
-首先按~使机械臂返回原点，或控制机械臂运动至某一初始点位后按2进入关节控制状态机，再按7进入示教状态机后，输入标签名后enter，此时可以拖拽机械臂运动一定的轨迹，机械臂将持续记录轨迹直至用户按2进入关节空间控制。
+First, press"~"to make the robotic arm return to the origin, or control the robotic arm move to a certain initial point, press 2 to enter the joint control state machine, then press 7 to enter the teaching state machine, input the label name and click Enter , then you can manipulate the robotic arm to move in a certain trajectory, the trajectory will be recorded constantly until the user clicks 2 to enter the joint space control.
 
-该轨迹将保存在z1_controller/config目录下一个新的.csv文件中。
+The trajectory will be saved in a new ".csv" file in directory catalog Z1_controller/config.
 
 ## TEACHREPEAT
 
-键盘按8进入示教重复状态机，输入已保存的轨迹标签名（可以查看csv文件确认），机械臂将重复该示教轨迹运动。
+Press 8 on the keyboard to enter the repeated teaching state machine, input the saved trajectory label name (check the csv file to confirm), the robotic arm will repeat the teaching trajectory movement.
 
 ## SAVESTATE
 
-键盘按9，允许将机械臂某一时刻的各关节角度记录为一个标签，我们称此功能为 **标签记录**。
+Pressing 9 on the keyboard allows to record the angle of each joint of the robotic arm as a label at a certain moment, this function is called "label recording".
 
-机械臂会自动保存当前的位姿状态，根据提示输入自定的标签名。
-记录的标签保存于savedArmStates.csv文件中。
-完成后机械臂及将自动转至关节空间控制状态。
+The robotic arm will automatically save the current pose state and input a custom label name according to the prompts. The recorded labels are saved in the file "savedArmStates.csv". After completion, the robotic arm will automatically turn to the joint space control state.
 
 ## TOSTATE
 
-键盘按0，输入已存储的标签名后enter，机械臂将自动运行至相应位姿。
+Press 0 on the keyboard, input the stored label name, then click Enter, the robotic arm will automatically move to the corresponding pose.
 
-当运动完成后，机械臂将自动转至关节空间控制状态。
+When the movement completed, the robotic arm will automatically turn to the joint space control state.
 
 ## CALIBRATION
 
-键盘按=，设置当前位置为初始位置，完成设置后机械臂将自动转至阻尼状态。
+Press"="on the keyboard to set the current position as the initial position. After completing the setting, the robotic arm will automatically turn to the passive state.
 
-新的机械臂需在运行程序的第一步执行该操作。
+A new robotic arm needs to perform this operation in the first step of running the program.

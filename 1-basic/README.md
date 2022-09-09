@@ -2,6 +2,6 @@
 sort: 1
 ---
 
-# 基础概念
+# Basic concept
 
-本节主要介绍有关机械臂的一些基础知识。
+This section mainly introduces some basic knowledge about manipulator.

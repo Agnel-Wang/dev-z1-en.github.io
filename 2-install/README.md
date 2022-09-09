@@ -2,12 +2,11 @@
 sort: 2
 ---
 
-# 机械臂安装
+# Z1 Robotic Arm Installation
 
-## 机械臂运动范围
+## The Movement Range of Z1 Robotic Arm
 
-在安装机械臂时，要考虑机械臂的运动范围一面造成不必要的损失。
-机械臂的运动范围如下图所示
+When installing the robotic arm, consider the movement range of the robotic arm to avoid unnecessary losses. The movement range of the robotic arm please see below:
 
 <center>
 <img src="../img/range.png" style="zoom:70%" alt=" 图片不见了。。。 "/>
@@ -15,41 +14,29 @@ sort: 2
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;"></div>
+padding: 1px;">The movement range of Z1 robotic arm</div>
 </center>
 <br>
 
-各个关节的运动范围如下表所示
-
-<!-- <table>
-
-|关节|最小角度|最大角度|
-|:-:|:-:|:-:|
-|J1|-150°|150°|
-|J2|0|180°|
-|J3|-165°|0|
-|J4|-100°|100°|
-|J5|-89°|89°|
-|J6|-160°|160°| -->
+The movement range of each joint please see below.
 
 <center>
 <table border="1">
-    <tr><td>关节</td><td>最小角度</td><td>最大角度</td></tr>
+    <tr><td>Joint</td><td>Minimum</td><td>Maximum</td></tr>
     <tr><td>J1</td><td>-150°</td><td>150°</td></tr>
     <tr><td>J2</td><td>0°</td><td>180°</td></tr>
     <tr><td>J3</td><td>-165°</td><td>0°</td></tr>
-    <tr><td>J4</td><td>-100°</td><td>100°</td></tr>
-    <tr><td>J5</td><td>-89°</td><td>89°</td></tr>
+    <tr><td>J4</td><td>-80°</td><td>80°</td></tr>
+    <tr><td>J5</td><td>-85°</td><td>85°</td></tr>
     <tr><td>J6</td><td>-160°</td><td>160°</td></tr>
 </table>
 </center>
 
-实际计算采用弧度制，还有其他如坐标轴、惯性矩阵等信息都在~/z1_ws/src/z1_ros/z1_description/xacro的文件里有描述。
+The actual calculation uses radian system, and other information such as coordinate axes and inertia matrix are described in the document ~/z1_ws/ SRC /z1_ros/z1_description/xacro.
 
-## 安装机械臂
+## Installation of Robotic Arm
 
-用户在固定机械臂时可根据机械臂底座孔位尺寸及真实环境自行设计安装台架，机械臂的固定台架不仅需要承受机械臂自身的重量，还要承受最大加速度运动时的瞬时动态作用力。
-机械臂使用4颗M6螺栓，用内六角扳手安装机械臂。底座安装图如下
+When fixing the robotic arm, the user can design and install the platform according to the hole size of the robotic arm base and the real environment. The fixed platform of the robotic arm needs to bear not only its weight, but also the instantaneous dynamic force during the maximum acceleration movement. Four M6 bolts are used for the robotic arm, and the robotic arm is installed with a hex wrench. The base installation please see below:
 
 <center>
 <img src="../img/arm_buttom.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
@@ -57,24 +44,25 @@ padding: 1px;"></div>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">机械臂底座螺丝安装图</div>
+padding: 1px;">Installation Diagram of Robotic Arm Base</div>
 </center>
 <br>
 
-当然，我们提供了固定板及G夹，方便直接固定到桌面上。
+Certainly, we provide fixing plates and G clips for directly being fixed to the desktop.
+
 <center>
 <img src="../img/arm_guding.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">机械臂安装图</div>
+padding: 1px;">Installation of Robotic Arm</div>
 </center>
 <br>
 
-## 线缆连接
+## Cable Connection
 
-机械臂线缆主要有两种：供电线和通信线。机械臂供电线的接头具备防呆功能，供电线插入下图所示的机械臂供电接口即可。同时将通信线(即网线)的一端插入下图所示的机械臂网口并锁紧即可，通信线的另一端连接电脑。
+There are two main types of robotic arm cables: power supply cables and telecommunication cables. The connector of the power supply cable of the robotic arm has a mistake-proof function, and the power supply cable can be inserted into the power supply port of the robotic arm as shown in the figure below. Meanwhile, insert one end of the telecommunication cable (the network cable) in the network port of the robot arm as shown in the figure below and lock it tightly, and the other end of the telecommunication cable is connected to the computer.
 
 <center>
 <img src="../img/arm_xianglan.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
@@ -82,28 +70,26 @@ padding: 1px;">机械臂安装图</div>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">机械臂线缆连接图</div>
+padding: 1px;">Connection Diagram of the Robotic Arm</div>
 </center>
 <br>
 
-## 上电
+## Power-on
 
-机械臂重新上电前一定要**确保运动程序关闭**，否则会有危险发生的可能。并让机械臂处于零位，
-机械臂零位姿态如下图，J1、J6关节缝隙两侧的线完全对应，其他关节摆放到位即可。
-
+**Make sure that the movement program is turned off** before power on the robotic arm, otherwise there may be danger. And let the robotic arm stay in zero position. The zero position of the robotic arm is as shown in the figure below. The lines on both sides of the joint gaps of J1 and J6 correspond exactly, and the other joints can be placed in order.
 <center>
 <img src="../img/arm_powerOn.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">机械臂上电零位连接图</div>
+padding: 1px;">Zero Position of Z1 Robotic Arm</div>
 </center>
 <br>
 
-成功上电时，自检通过机械臂绿灯会常亮，蓝灯闪烁。
+When the device is powered on successfully, the green light is steady on, and the blue light will flash once the self-check passes.
 
-需注意，每次使用前将机械臂各关节转到零位，这是为了让控制算法中的理论零位与实际机械零位重合。另外，机械臂末端电机的黑白电源线是有DC24V电的，如果不需要，请务必把黑白电源线用绝缘胶带缠绕固定，防止短路等发生危险。
+It should be noted that each joint of the robotic arm should be turned to the zero position before use every time, so that the theoretical zero position in the control algorithm coincides with the actual mechanical zero position. In addition, the black and white power cord of the motor at the end of the robotic arm has DC24V power supply. If it is not needed, be sure to wrap the black and white power cord with insulating tape to prevent danger such as short circuit.
 
 ## 关节说明
 
@@ -113,11 +99,11 @@ padding: 1px;">机械臂上电零位连接图</div>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">z1机械臂关节序号及关节转动正方向定义</div>
+padding: 1px;">Joint Serial Number and Positive Direction of Joint Rotation Definition</div>
 </center>
 <br>
 
-在开始控制前，我们有必要了解下机械臂关节的定义及转动的正方向定义。宇树Z1机械臂是六自由度机械臂，其各关节序号从J1开始，逐个递增至J6。在上图中`+`键表示关节转动的正方向，`-`键表示关节转动的负方向。了解转动的正方向对之后的关节空间控制的使用很有帮助。
+Before controlling the robotic arm, it is necessary to understand the joint definition and the positive direction of rotation. Unitree Z1 is a six degrees of freedom robotic arm, and the serial numbers of its joints start from J1 and increase to J6 one by one. In the above figure, **key +** represents the positive direction of the joint rotation, and **key -** represents the negative  direction. Knowing the positive direction of rotation is helpful for later use of joint space control.
 
 基于指数积进行机械臂各种运算所需的参数如下：
 
