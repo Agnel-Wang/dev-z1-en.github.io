@@ -104,35 +104,6 @@ exit                                                        # Exit super adminis
 
 Refer to ROS official[melodic installation tutorial](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
-Add ROS Source
-
-```shell
-sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-```
-
-Install Melodic
-
-```shell
-sudo apt update
-sudo apt install ros-melodic-desktop-full
-```
-
-Install ROS Dependency
-
-```shell
-sudo apt-get install python3-pip 
-sudo pip3 install rosdepc
-sudo rosdepc init
-rosdepc update
-```
-
-Add ROS Environment Variables
-
-```shell
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-```
 ## Network Configuration
 
 ### Change IP
