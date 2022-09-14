@@ -2,17 +2,17 @@
 sort: 6
 ---
 
-# 更新日志
+# Log Update
 
 + 2022.9.5
   
-    1. 更改协议传输结构体，允许用户自定义多段连续轨迹
-    2. 解决笛卡尔空间状态机下进行旋转操作时会产生移动的问题。
+    1. Change the protocol transmission structure to allow users to customize multi-segment continuous traces.
+    2. Solving the instability problem of rotation adjustment in cartesian space.
 
 + 2022.8.15
 
-    1. 在config.xml文件中添加末端执行器配置信息
+    1. Add end effector configuration information in the config.xml.
 
 + 2022.8.12
 
-    1. 临时添加无手爪版本SDK，解决在示教模式下即使无手爪仍进行动力学前馈导致机械臂异常运动问题。
+    1. Temporarily add a non-gripper version SDK to solve the abnormal movement of the robotic arm caused by the error of non-gripper dynamics model in teaching mode.

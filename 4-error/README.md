@@ -2,39 +2,36 @@
 sort: 4
 ---
 
-# 常见异常
+# Common Abnormalities  
 
-## 机械臂抖动
+## Vibration of Robotic Arm
 
-为了保证整个机械臂的力控性能，每个关节采用的谐波减速器减速比相对较低，使得关节刚度相对较低；并且本机械臂是轻量级机械臂，各连杆也比较轻量，机械臂整机机械刚度也相对较低。
+To ensure the force control capability of the robotic arm, the deceleration ratio of harmonic reducer used in each joint is relatively low, which makes the joint stiffness in the same situation. And the robotic arm is light weighted, the connecting rod is also light, so the mechanical stiffness of the robotic arm is relatively low.Therefore, if the control method adopted is not optimized enough, the robotic arm may shake.
 
-因此，如果采用的控制方式不够优化，机械臂会有抖动的情况。
+## Motor Over-temperature Protection
 
-## 电机过温保护
+If the load of robotic end is large and its continuous operation time is too long, with different pose, the joints with a large load will make the joint motor overheat and enter the protection state.
 
-如果机械臂末端负载较大、持续运行时间太长，在机械臂不同的位姿下，负载比较大的关节，会导致关节电机过热而进入保护状态。
+## Joint not Reset when Power-on
 
-## 上电时关节未复位
-
-机械臂开机使用时如果发生如下报错，是由于机械臂在上电时joint1没有在零位导致。
-因此，上电前务必将机械臂各个关节摆放到零位。
+If the following error occurs when the robotic arm is powered on, it is because the joint 1 is not at the zero position when the robotic arm is powered on. Therefore, be sure to place all joints of the robotic arm to the zero position before powering on.
 
 ```text
 [ERROR] The No.1 term of joint angle: -0.024 does not between [0.000 3.142]
 ```
 
-## 不断电，直接更换电脑不能控制机械臂
+## Direct replacement of PC cannot control the robot arm when the arm is not powered
 
-机械臂上电与上位机通讯后会自动绑定端口号，所以要更换电脑控制机械臂需重新对机械臂进行断电上电。
+ Z1 robot arm will automatically bind the port after powering on and communicating with PC, so to replace the computer-controlled robot arm, you need to power off and power on the robot arm again.
 
-## 机械臂指示灯红灯闪烁
+## The red light of Z1 robot arm indicator flashes
 
-机械臂关节通讯出现异常。终端会提示出现异常的关节序号。
+There is an abnormality in the robotic arm joint communication.
 
-## 机械臂拖拽结束后，第三个关节突然动作
+## The third joint suddenly moves at the end of Z1 robot arm dragging demonstration
 
-示教过程中拖动的第三个关节超过软件限位。
+The angle of the third joint dragged during the demonstration exceeds the software limit.
 
-## 进入拖拽示教模式，机械臂第三个关节突然弹起
+## Entering the dragging demonstration mode, the third joint of Z1 robot arm suddenly pops up
 
-此问题由于动力学模型错误导致，如果机械臂没有夹爪，需要z1_controller文件夹下config.xml中gripper set设置为1，SDK默认是带夹爪的动力学模型。
+This problem is caused by a kinetic model error. If the robot arm has no gripper, you need to set the "gripper set" to 1 in config.xml under z1_controller folder. The SDK defaults to a kinetic model with gripper.

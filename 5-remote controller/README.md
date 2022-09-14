@@ -2,23 +2,23 @@
 sort: 5
 ---
 
-# 手柄控制机械臂说明
+# Instructions for Using the Joystick to Control Z1
 
-## 控制模式
+## Control Mode
 
-手柄控制固定在机器狗上的机械臂，有三种控制模式。
+There are three control modes using the joystick to control Z1.
 
-1.关节空间控制。当处于此模式时，手柄可控制机械臂单个关节转动。
+1.Joint space control. The joystick can control every motor in this mode.
 
-2.笛卡尔空间控制。当处于此模式时，机械臂作为一个整体，手柄控制机械臂在工具坐标系下沿XYZ轴方向移动以及绕XYZ轴转动。
+2.Cartesian space control. In this mode, Z1 robot arm acts as a whole, the joystick controls Z1 to move along the XYZ axis and rotate around the XYZ axis.
 
-3.固定轨迹运动。机械臂内置演示用的固定动作。
+3.Fixed trajectory motion. Z1 robot arm has built-in fixed movements for demonstration.
 
-## 手柄键位介绍
+## Introduction of Joystick Button
 
-### 关节空间控制
+### Joint Space Control
 
-当机器狗停止时，同时按住L1+L2键，切换到要控制控制机械臂，机器狗不再运动。此时按下R2键则进入关节空间控制模式，用手柄可控制单个关节转动，对应键位如下图所示。运动结束后，按下R2可使机械臂回到原位。
+When B1 robot stops, press **L1+L2 button at the same time** to switch to Z1 robot arm to be controlled, and B1 robot will no longer move. Then press R2 button to enter the joint space control mode. You can control individual joints by using the joystick as shown in the figure below. When Z1 robot arm finish the movement, press R2 to return it to its original position. 
 
 <center>
 <img src="../img/remote_joint control.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
@@ -30,9 +30,9 @@ padding: 1px;">关节空间手柄控制</div>
 </center>
 <br>
 
-### 笛卡尔空间控制
+### Cartesian Space Control
 
-当机器狗停止时，同时按住L1+L2键，切换到要控制控制机械臂，机器狗不再运动。此时按下R1键则进入笛卡尔空间控制模式，或者当机械臂处于关节空间控制模式下，按下R1键位也可进入笛卡尔空间控制模式，对应键位如下图所示。运动结束后，按下R2可使机械臂回到原位。
+When B1 robot stops, press **L1+L2 button at the same time** to switch to Z1 robot arm to be controlled, and B1 robot will no longer move. Then, or when Z1 robot arm is in the joint space control mode, press R1 button to enter the cartesian space control mode as shown in the figure below. When Z1 robot arm finish the movement, press R2 to return it to its original position. 
 
 <center>
 <img src="../img/remote_cartesian control.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
@@ -45,19 +45,19 @@ padding: 1px;">笛卡尔空间手柄控制</div>
 <br>
 
 <center>
-<img src="../img/cartesian_example.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/cartesian_example.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">机械臂工具坐标系</div>
+padding: 1px;">Robotic arm tool coordinate system</div>
 </center>
 <br>
 
-### 固定轨迹运动
+### Fixed Trajectory Motion
 
-当机器狗停止时，同时按住L1+L2键，切换到要控制控制机械臂，机器狗不再运动。此时按下R2键后，按SELECT键机械臂到固定位置，再按下SELECT机械臂回到初始位置，第三次按SELECT键机械臂会一直处于运动状态。
+When B1 robot stops, press **L1+L2 button at the same time** to switch to Z1 robot arm to be controlled, and B1 robot will no longer move. Then after pressing R1 button, press SELECT button to control Z1 robot arm to a fixed position. Then press SELECT button, Z1 will be back to the initial position, and the third time to press SELECT button, Z1 will always be in motion.
 
-## 注意事项
+## Cautions
 
-由于机器狗和机械臂用同一个手柄进行控制，存在部分键位共用，因此，控制机器狗移动时，要同时按下**R1+R2**将机械臂切入阻尼状态。判断机械臂是否在阻尼状态，可用手拖动机械臂，若能拖动则表明已切入阻尼。控制机械臂运动时，则需要机器狗处于停止状态。机械臂运动完成后，需要同时按下**L1+L2**键，手柄可控制机器狗运动。
+Since the B1 robot and the Z1 are controlled with the same joystick, there is a partial button sharing, therefore, when controlling the B1 robot movement, press **R1+R2 at the same time** to switch the Z1 robot arm into the passive state. To determine whether the Z1 is in the passive state, drag Z1 by hand; if it can be dragged, it is switch into the passive state. To control the movement of the robot arm, the B1 robot needs to be in the stop state.When Z1 robot arm finish the movement, press L1+L2 button at the same time to switch to B1 robot to be controlled.

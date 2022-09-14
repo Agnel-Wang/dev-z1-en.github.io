@@ -37,7 +37,7 @@ Cartesian Space Control: It is control for the end pose variables of the robot.
 The user directly sends the expected end pose of the robotic arm to the controller`z1_ctrl`，after calculation by kinematics and dynamics,`z1_ctrl` will obtain the corresponding angle and angular speed of each joint then send these commands to the robotic arm to control its movement.
 
 <center>
-<img src="../img/cartesian_example.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/cartesian_example.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;

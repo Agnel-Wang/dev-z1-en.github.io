@@ -2,35 +2,35 @@
 sort: 2
 ---
 
-# SDK运行
+# SDK Operation
 
-## ROS仿真
+## ROS Simulation
 
-**①** 首先将z1_ws设置为ROS的工作空间，我们已经将ROS所需的相关文件放置在z1_ws/src/z1_ros文件夹下（打开第1个终端）
+**①** First set z1_ws as the ROS workspace, we have placed the relevant files required by ROS in folder z1_ws/src/z1_ros (open the first terminal).
 
-如果用户对如何设置路径不太熟悉，请将z1_ws文件夹移动到 /home/用户名/ 目录下
+If the user is not familiar with the path setting, please move folder z1_ws folder to /home/username/ directory.
 
 ```shell
-cd ~/z1_ws                                          #打开该文件夹
-catkin_make                                         #初始化ROS工作空间
-echo “source ~/z1_ws/devel/setup.bash”>>~/.bashrc   #将ros路径添加到环境变量，可由pwd命令获取当前路径替换该路径
-source ~/.bashrc                                    #更新环境变量
+cd ~/z1_ws                                                #Open the folder
+catkin_make                                               #Initialize ROS workspace
+echo “source ~/z1_ws/devel/setup.bash”>>~/.bashrc         #Add the ros path to the environment variables
+source ~/.bashrc                                          #Update environment variables
 ```
 
-在终端执行`roslaunch z1_gazebo z1.launch`，如果成功配置此时可以显示出gazebo的仿真界面。
+Run `roslaunch z1_gazebo z1.launch`,If successfully configured, the simulation interface of Gazebo will be displayed.
 
 ```text
-Tips：可以在输入 roslaunch z后按tap查看是否终端会自动补全，如果成功出现roslaunch z1_说明路径设置成功
+Tips：After entering `RosLaunch Z`, press tap to check whether the terminal will automatically complete. If rosLaunch Z1_ is successfully programmed, that means the path setting is successful.
 ```
 
-**②** 打开z1_controller文件夹下的CMakeLists文件，更改编译条件如下
+**②** Open the CMakeLists in the z1_controller folder and change the compilation conditions as follows.
 
 ```cmake
 # set(COMMUNICATION UDP)             #UDP
 set(COMMUNICATION ROS)               #ROS
 ```
 
-**③** 编译z1_controller，在该文件夹下创建build文件夹（打开第2个终端）
+**③** Compile z1_controller, create a folder named build in this file (open the second terminal).
 
 ```shell
 mkdir build
@@ -39,17 +39,17 @@ cmake ..
 make
 ```
 
-执行build文件夹内的可执行文件
+Execute the executable file in folder build.
 
 ```shell
 ./z1_ctrl
 ```
 
-当执行该条命令后，终端会不断地打印`[WARNING] UDPPort::recv, unblock version, wait time out`语句，这是正常的，因为我们还没有启动机械臂SDK与机械臂控制器通信。
+When executing this command, the terminal will continuously print statements, such as`[WARNING] UDPPort::recv, unblock version, wait time out`, this is normal because we have not started the robotic arm SDK to communicate with the robotic arm controller.
 
-**各种信息都会在这个窗口打印，用户使用使请多观察此窗口内容。**
+**Various information will be printed in this window, please observe the content of this window.**
 
-**④** 打开z1_sdk文件夹，在该文件夹下创建build文件夹（打开第3个终端）
+**④** Open folder z1_SDK and create folder build in it (open the third terminal).
 
 ```shell
 mkdir build
@@ -58,44 +58,54 @@ cmake ..
 make
 ```
 
-执行build文件夹内的可执行文件
+Execute the executable file in folder build.
 
-其中共生成example_keyboard_send, example_lowcmd_send, bigdemo，四个可执行文件。
+There are four executable files generated, example_keyboard_send, example_lowcmd_send, bigdemo,getJointGripperState.
 
-本次我们执行example_keyboard_send
+This time we run example_keyboard_send.
 
 ```shell
 ./example_keyboard_send
 ```
 
-+ 键盘操作 *具体的键位在状态机小节会有介绍*
++ Keyboard Operation:The specific keys will be introduced in state machine section.
 
-在键盘上按0键，此时机械臂会进入标签运行状态机，终端输入forward后enter，机械臂会向前运行，再按 ~ 键会回到原点。回到原点后会自动进入关节控制模式，此时可根据以下键位**长按**控制机械臂转动。
+Press key 0 on the keyboard, the robotic arm will enter the label operation state machine. Input forward at the prompt, then click enter, the robotic arm will run forward. Press ~ again, return to the origin. After returning to the origin, it will automatically enter the joint control mode. At this time, the rotation of the robotic arm can be controlled by **long press** according to the following keys.
 
-<center>
-<img src="../img/joint_keyboard.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
-<br>
-<div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
-display: inline-block;
-color: #999;
-padding: 1px;">关节空间速度控制按键图示</div>
-</center>
-<br>
+<table border="1">
+    <tr>
+        <td>Joint ID</td>
+        <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        <td>Gripper</td>
+    </tr>
+    <tr>
+        <td>Keyboard</td>
+        <td>Q/A</td><td>W/S</td><td>D/E</td><td>R/F</td><td>T/G</td><td>Y/H</td>
+        <td>up/down</td>
+    </tr>
+    <tr>
+        <td><p>Joint Action</p>(right hand)</td>
+        <td><p>positive/</p>negative</td><td><p>positive/</p>negative</td>
+        <td><p>positive/</p>negative</td><td><p>positive/</p>negative</td>
+        <td><p>positive/</p>negative</td><td><p>positive/</p>negative</td>
+        <td><p>positive/</p>negative</td>
+    </tr>
+</table>
 
-此时我们已经完成仿真操作，整个流程为&emsp;**运行ROS-->运行z1_ctrl-->运行SDK实例**
+Now, we have completed the simulation operation. The whole process is: **Run ROS-->Run z1_ctrl-->Run SDK instance**.
 
-## 实机控制
+## Real Machine Control
 
-**①** 首先对机械臂进行通电，并通过ping 192.168.123.110指令查看是否通信正常
+**①** First power on the robotic arm, and check whether the communication is normal by ping 192.168.123.110 command.
 
-**②** 打开z1_controller文件夹下的CMakeLists文件，更改编译条件如下
+**②** Open file CMakeLists in folder z1_controller and change the compilation conditions as follows.
 
 ```cmake
-set(COMMUNICATION UDP)               #UDP
-# set(COMMUNICATION ROS)             #ROS
+set(COMMUNICATION UDP)                         #UDP
+# set(COMMUNICATION ROS)                       #ROS
 ```
 
-**③** 执行`./z1_ctrl`
-**④** 执行`./example_keyboard_send`
+**③** Run `./z1_ctrl`
+**④** Run `./example_keyboard_send`
 
-此处和仿真的操作一致，此时已经了解如何控制机械臂，更多操作方法将在[基础概念](../1-basic/sdk.md)小节介绍
+The operation here is consistent with the simulation. Now, we have learned how to control the robotic arm. More operation methods will be introduced in the [basic concept](../1-basic/sdk.md) section.

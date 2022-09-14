@@ -51,7 +51,7 @@ padding: 1px;">Installation Diagram of Robotic Arm Base</div>
 Certainly, we provide fixing plates and G clips for directly being fixed to the desktop.
 
 <center>
-<img src="../img/arm_guding.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/arm_install.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
@@ -65,7 +65,7 @@ padding: 1px;">Installation of Robotic Arm</div>
 There are two main types of robotic arm cables: power supply cables and telecommunication cables. The connector of the power supply cable of the robotic arm has a mistake-proof function, and the power supply cable can be inserted into the power supply port of the robotic arm as shown in the figure below. Meanwhile, insert one end of the telecommunication cable (the network cable) in the network port of the robot arm as shown in the figure below and lock it tightly, and the other end of the telecommunication cable is connected to the computer.
 
 <center>
-<img src="../img/arm_xianglan.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/arm_xianlan.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
