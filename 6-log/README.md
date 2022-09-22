@@ -4,6 +4,11 @@ sort: 6
 
 # Log Update
 
++ 2022.9.21
+
+    1. Add end-effector control in State_Teach
+    2. Add command track application in the State_JOINTCTRL and State_Cartesian
+
 + 2022.9.5
   
     1. Change the protocol transmission structure to allow users to customize multi-segment continuous traces.
@@ -11,7 +16,7 @@ sort: 6
 
 + 2022.8.15
 
-    1. Add end effector configuration information in the config.xml.
+    1. Add end-effector configuration information in the config.xml.
 
 + 2022.8.12
 
