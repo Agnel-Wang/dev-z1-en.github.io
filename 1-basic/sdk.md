@@ -45,23 +45,30 @@ There are four functions defined in Z1ARM, each of which controls the robotics a
 
 ① void armCtrlByFSM()
 
-armCtrlByFSM implements specific application  by switching the state machine.
+*armCtrlByFSM* implements specific application  by switching the state machine.
 
-For example, through the MoveJ(posture) function, you can automatically switch to the MoveJ state machine and run to the specific posture.
+For example, through the *MoveJ(posture)* function, you can automatically switch to the *MoveJ* state machine and run to the specific posture.
 
-Note: In this way, MoveJ、MoveL and MoveC do not have speed definition interface.
+Note: In this way, *MoveJ*、*MoveL* and *MoveC* do not have speed definition interface.
 
 ② void armCtrlByTraj()
 
 This function involves two state machines, **State_Trajectory** and **State_SetTraj**.
 
-By switching to State_SetTraj (which must be in the State_JOINTCTRL) via the setTraj() function automatically, and recording the currently TrajCmd, (trajOrder must be guaranteed to be continuous), where the start point of the trajectory is the end point of the previous trajectory. All trajectories will be recorded while exiting the State_SETTRAJ, and then you can enter the State_Trajectory to execute the recorded trajectories in turn.
+By switching to State_SetTraj (which must be in the State_JOINTCTRL) via the *setTraj()* function automatically, and recording the currently TrajCmd,
+(trajOrder must be guaranteed to be continuous), where the start point of the trajectory is the end point of the previous trajectory.
+All trajectories will be recorded while exiting the State_SETTRAJ, and then you can enter the State_Trajectory to execute the recorded trajectories in turn.
 
 If a new trajectory is not set by State_SetTraj during this process, you can enter the State_Trajectory again to execute the recorded trajectory.
 
 ```text
-Note: Since the state machine in the SDK is switched by simulating the keyboard, the two state machines also have actual corresponding keys in the keyboard, which are "-" and "l", respectively. But in fact, it is impossible to do anything simply through the keyboard. However, if the user presses the minus "-" key in the keyboard, the robot arm will run a default demonstration action.
-At the same time, if the bigdemo is running at State_Trajectory, because the command has been sent, if the bigdemo program is terminated, the z1_ctrl will still complete the execution of the current trajectory.
+Note: Since the state machine in the SDK is switched by simulating the keyboard, 
+the two state machines also have actual corresponding keys in the keyboard, which are "-" and "l", respectively.
+But in fact, it is impossible to do anything simply through the keyboard. 
+However, if the user presses the minus "-" key in the keyboard, the robot arm will run a default demonstration action.
+
+At the same time, if the bigdemo is running at State_Trajectory, given the command has been sent, 
+the z1_ctrl will still complete the execution of the current trajectory even if the bigdemo program has been terminated.
 ```
 
 ③ void armCtrlTrackInJointCtrl()
