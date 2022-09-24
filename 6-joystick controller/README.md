@@ -1,5 +1,5 @@
 ---
-sort: 5
+sort: 6
 ---
 
 # Instructions for Using the Joystick to Control Z1

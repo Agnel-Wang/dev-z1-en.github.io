@@ -12,7 +12,7 @@ This document contains information about the installation and commissioning of t
 
 PS：用户需根据自身使用情况下载相应的SDK。 -->
 
-## Safety instructions
+<!--## Safety instructions
 
 ###	Introduction
 
@@ -36,7 +36,7 @@ Robotic arm users should fully understand the risks, must read this manual caref
 
 8. Avoid using the arm in wet or dusty environment.
 
-9. Please make sure to store and install the arm in a place where children cannot touch it to avoid danger.
+9. Please make sure to store and install the arm in a place where children cannot touch it to avoid danger.-->
 
 ## Abstract
 
