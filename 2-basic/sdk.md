@@ -32,9 +32,9 @@ This file shows how to send **PD** parameters directly to the motor. The simulat
 
 ### 3. bigDemo
 
-bigDemo has written an example of calling member functions in the class that inherits the interface laid down by unitreeArm.
+By inheriting from the unitreeArm class, bigDemo writes an example of calling a member function in the class.
 
-There are four functions defined in Z1ARM, each of which controls the robotics arm in a different method, respectively.
+Four functions are defined in the Z1 ARM class to demonstrate each of the four ways to control the robot arm using upper-level commands.
 
 ```cpp
     void armCtrlByFSM();
@@ -56,8 +56,7 @@ Note: In this way, *MoveJ*、*MoveL* and *MoveC* do not have speed definition in
 This function involves two state machines, **State_Trajectory** and **State_SetTraj**.
 
 By switching to State_SetTraj (which must be in the State_JOINTCTRL) via the *setTraj()* function automatically, and recording the currently TrajCmd,
-(trajOrder must be guaranteed to be continuous), where the start point of the trajectory is the end point of the previous trajectory.
-All trajectories will be recorded while exiting the State_SETTRAJ, and then you can enter the State_Trajectory to execute the recorded trajectories in turn.
+(trajOrder must be guaranteed to be continuous), where the start point of the trajectory is the end point of the previous trajectory. All trajectories will be recorded while exiting the State_SETTRAJ, and then you can enter the State_Trajectory to execute the recorded trajectories in turn.
 
 If a new trajectory is not set by State_SetTraj during this process, you can enter the State_Trajectory again to execute the recorded trajectory.
 
