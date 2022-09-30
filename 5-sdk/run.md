@@ -28,6 +28,9 @@ Tips：After entering `RosLaunch Z`, press tap to check whether the terminal wil
 ```cmake
 # set(COMMUNICATION UDP)             #UDP
 set(COMMUNICATION ROS)               #ROS
+# also comment out 
+# add_dependencies(z1_ctrl Z1_${COMMUNICATION}_Linux64)
+
 ```
 
 **③** Compile z1_controller, create a folder named build in this file (open the second terminal).
