@@ -84,11 +84,11 @@ Example:
 
 1. First run the robotic arm to the "forward" pose
 
-    Press 0, input forward, then click Enter
+    Press 0, input **forward**, then click Enter
 
 2. MOVEJ
 
-    Press 4, input 0.5 0.1 0.1 0.5 -0.2 0.5
+    Press 4, input **0.5 0.1 0.1 0.5 -0.2 0.5**
 
     Please make sure the input is correct, and click Enter twice, then the robotic arm starts to move.
 
@@ -96,13 +96,13 @@ Example:
 
 3. MOVEL
 
-    Press 5, input 0 0 0 0.45 -0.2 0.2, then click Enter twice.
+    Press 5, input **0 0 0 0.45 -0.2 0.2**, then click Enter twice.
 
 4. MOVEC
 
     Press 6, input two poses, the intermediate pose, and the final pose. 
 
-    Input 0 0.2 0 0.4 0 0.3 and then click Enter, then input 0 -0.1 0.5 0.5 0.25 0.44 and click Enter twice. The sample program details, please find in the bigDemo example.
+    Input **0 0.2 0 0.4 0 0.3** and then click Enter, then input **0 -0.1 0.5 0.5 0.25 0.44** and click Enter twice. The sample program details, please find in the bigDemo example.
 
 ## TEACH
 
