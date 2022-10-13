@@ -13,7 +13,7 @@ If the user is not familiar with the path setting, please move folder z1_ws fold
 ```shell
 cd ~/z1_ws                                                #Open the folder
 catkin_make                                               #Initialize ROS workspace
-echo “source ~/z1_ws/devel/setup.bash”>>~/.bashrc         #Add the ros path to the environment variables
+echo "source ~/z1_ws/devel/setup.bash">>~/.bashrc         #Add the ros path to the environment variables
 source ~/.bashrc                                          #Update environment variables
 ```
 
