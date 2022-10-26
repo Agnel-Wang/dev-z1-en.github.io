@@ -7,7 +7,9 @@ sort: 8
 + 2022.10.21
 
     1. Remove the gripper item from the file Config.xml, and instead detect the presence or absence of gripper according to the number of motors; add collision terms, including whether to turn on collision detection, limit torque and end load. The end load is attached to the end joint, which affects the calculation of the feedforward torque, and it is always in effect.
-
+    2. Add error feedback to the communication structure between controller and SDK (need to be supported by the lower computer)
+    3. Remove the controller's dependence on RBDL
+    4. Remove keyboard control from SDK; Add lowlevelstate and lowlevelcmd classes to encapsulate UDP communication structures;
 
 + 2022.9.21
 
