@@ -8,7 +8,19 @@ sort: 1
 
 All files about robotic arm SDK will be stored in a compressed package named z1_sdk_20xx.x.x.zip, Z1_sdk is the name of the SDK, and 20xx.x.x is the release date of SDK. There are three subfolders in the compressed package: z1_controller, z1_sdk and z1_ws, and z1_ws belongs to a workspace of the ROS system. Z1_controller stores the source codes which directly controls the robotic arm, the codes are packaged as a library and invisible to the user. Z1_sdk is a folder about the robotic arm named SDK unitree_arm_sdk, which contains the interfaces used for robotic arm control.
 
-In folder z1_controller, the user only needs to focus on file CMakeLists.txt, and select ROS, UDP as required.
+In folder z1_controller, the user only needs to focus on file CMakeLists.txt (select ROS, UDP as required) and config.xml.
+
+There are three configurations in config.xml, which read only once when z1_ctrl starts:
+
+1. control
+    Confirm the default control mode: 1 is keyboard control, 2 is SDK control, 3 is unitree joystick control (needs to be mounted on Aliengo or B1 robot);
+    At the same time, regardless of the current default control mode, you can also select the keyboard control by `./z1_ctrl k` or the SDK control by `./z1_ctrl s`
+
+2. IP & Port
+    Set the IP of the lower computer, and port is bound by different z1_ctrl program
+
+3. collision
+    Contain settings related to collision detection, choose whether to turn on collision detection by setting open to Y or N; limitT is the difference detection threshold between the calculated torque and the feedback torque, and the unit is NM; load is the load weight attached to the end of the robotic arm, in kg, this value is independent of the open setting, and will always participate in the dynamic calculation of the end load.
 
 There are many subfolders in folder z1_sdk, and their functions are:
 
@@ -16,19 +28,17 @@ There are many subfolders in folder z1_sdk, and their functions are:
 + CMakeLists.txt:A file that guides `unitree_arm_SDK` compilation. If you write your own executable file, add a path to it.
 + examples:Source code files which stores the robotic arm controlling examples.
 + include:The header file that stores the `unitree_arm_SDK` source code. Users only need to include the unitree_arm_sdk/unitree_arm_sdk.h file in the source file.
-+ unitreeArm:To store the source code of the unitreeArm class, which contains the methods that engineers encapsulate for users to easily call the robotic arm API. This class is closely related to the examples in the demo folder. Users can also use this type of code to write their own classes.
++ control:Contain CtrlComponents and unitreeArm, which contains the methods that engineers encapsulate for users to easily call the robotic arm API. This class is closely related to the examples in the demo folder. Users can also use this type of code to write their own classes.
 
 ## examples
 
 We have provided several examples to facilitate the use SDK. Please see the unitreeArm class comment for details.
 
-### 1. example_keyboard_send
-
-Users can send commands through the keyboard to control the robotic arm. The corresponding relationship between the specific keys and commands is described in the section of [Finite State Machine](FSM.md).
-
-### 2. example_lowcmd_send
+### 1. example_lowcmd_send
 
 This file shows how to send **PD** parameters directly to the motor. The simulated parameters differ from the actual parameters.
+
+**Note**: Kp send to motor is kp = kp \* 25.6; and Kd send to motor is kd = kd \* 0.0128
 
 ### 3. bigDemo
 
@@ -77,7 +87,3 @@ This function runs under the State_JOINTCTRL, there is a flag named "track", und
 ④ void armCtrlTrackInCartesian()
 
 This function runs under the State_Cartesian, which is same as armCtrlTrackInJointCtrl(), but tracking commands change from jointCmd.q and jointDmd.qd to trajCmd.posture[0].
-
-### 4. getJointGripperState
-
-The execution file prints the robotic arm end pose in real time to facilitate the user to record the point position.

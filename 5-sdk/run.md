@@ -60,13 +60,15 @@ make
 
 Execute the executable file in folder build.
 
-There are four executable files generated, example_keyboard_send, example_lowcmd_send, bigdemo,getJointGripperState.
+There are two executable files generated, example_lowcmd_send and bigdemo.
 
-This time we run example_keyboard_send.
+This time we run bigdemo.
 
 ```shell
-./example_keyboard_send
+./bigdemo
 ```
+
+You can also perform keyboard control directly by `./z1_ctrl k`.
 
 + Keyboard Operation:The specific keys will be introduced in state machine section.
 

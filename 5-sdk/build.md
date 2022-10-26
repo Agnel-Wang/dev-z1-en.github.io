@@ -85,7 +85,7 @@ make
 sudo make install
 ``` -->
 
-+ RBDL (Version 2.6.0)
++ RBDL (Version 2.6.0, No required after version 2022.10.21)
 
 ```shell
 cd rbdl-2.6.0
@@ -144,6 +144,8 @@ Open z1_controller/config.xml file and change the IP.
 Another control parameter under this file is used to change the control mode of the robot arm, namely keyboard, SDK, and handle control of the two dogs. Users do not need to change, just use the SDK. (set = "2")
 
 ## Gripper Configuration
+
+**Note**: No required after version 2022.10.21
 
 In config.xml, there are setting parameters for gripper. If you select 1, the end will have no gripper, and if it is 2, the end will be the Unitree gripper of the robotic arm.
 
