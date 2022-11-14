@@ -85,7 +85,7 @@ make
 sudo make install
 ``` -->
 
-+ RBDL (Version 2.6.0, No required after version 2022.10.21)
+<!-- + RBDL (Version 2.6.0, No required after version 2022.10.21)
 
 ```shell
 cd rbdl-2.6.0
@@ -98,7 +98,7 @@ sudo su    (input password)
 echo /usr/local/lib >> /etc/ld.so.conf                      # set path
 ldconfig
 exit                                                        # Exit super administrator mode
-```
+``` -->
 
 ## ROS(melodic) Installation
 
@@ -140,15 +140,3 @@ In this case, you can run the ping 192.168.123.110 command to check whether the 
 If the user changes the IP of the robotic arm control board, for example, changing the original 192.168.123.110 to 192.168.123.111, the IP address of the control program z1_crtl must be the same as the new one.
 
 Open z1_controller/config.xml file and change the IP.
-
-Another control parameter under this file is used to change the control mode of the robot arm, namely keyboard, SDK, and handle control of the two dogs. Users do not need to change, just use the SDK. (set = "2")
-
-## Gripper Configuration
-
-**Note**: No required after version 2022.10.21
-
-In config.xml, there are setting parameters for gripper. If you select 1, the end will have no gripper, and if it is 2, the end will be the Unitree gripper of the robotic arm.
-
-This setting parameter is only configured in the program. The actual robot arm with or without gripper does not affect the execution of the program. z1_controller will give a warning when the parameters are inconsistent.
-
-In the meanwhile, we allow users to define their own claw parameters according to user gripper, where endPosLocal is the relative coordinate of the gripper coordinates relative to the joint 5 terminal plane coordinate system (0.049, 0, 0.1605). The mass is the gripper mass, the unit is kg, com (center of mass) is the position of the gripper mass; I is the inertia matrix, which is uniformly distributed by default, so only values on the trace of the matrix are set.

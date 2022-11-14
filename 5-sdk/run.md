@@ -39,11 +39,7 @@ cmake ..
 make
 ```
 
-Execute the executable file in folder build.
-
-```shell
-./z1_ctrl
-```
+Execute the executable file `./z1_ctrl` in folder build. The default control mode is SDK, if you need to use keyboard control, use `./z1_ctrl k`
 
 When executing this command, the terminal will continuously print statements, such as`[WARNING] UDPPort::recv, unblock version, wait time out`, this is normal because we have not started the robotic arm SDK to communicate with the robotic arm controller.
 

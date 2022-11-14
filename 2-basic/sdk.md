@@ -8,18 +8,14 @@ sort: 1
 
 All files about robotic arm SDK will be stored in a compressed package named z1_sdk_20xx.x.x.zip, Z1_sdk is the name of the SDK, and 20xx.x.x is the release date of SDK. There are three subfolders in the compressed package: z1_controller, z1_sdk and z1_ws, and z1_ws belongs to a workspace of the ROS system. Z1_controller stores the source codes which directly controls the robotic arm, the codes are packaged as a library and invisible to the user. Z1_sdk is a folder about the robotic arm named SDK unitree_arm_sdk, which contains the interfaces used for robotic arm control.
 
-In folder z1_controller, the user only needs to focus on file CMakeLists.txt (select ROS, UDP as required) and config.xml.
+In folder z1_controller, the user only needs to focus on file CMakeLists.txt (select ROS, UDP as required) and config/config.xml.
 
-There are three configurations in config.xml, which read only once when z1_ctrl starts:
+There are two configurations in config.xml, which read only once when z1_ctrl starts:
 
-1. control
-    Confirm the default control mode: 1 is keyboard control, 2 is SDK control, 3 is unitree joystick control (needs to be mounted on Aliengo or B1 robot);
-    At the same time, regardless of the current default control mode, you can also select the keyboard control by `./z1_ctrl k` or the SDK control by `./z1_ctrl s`
-
-2. IP & Port
+1. IP & Port
     Set the IP of the lower computer, and port is bound by different z1_ctrl program
 
-3. collision
+2. collision
     Contain settings related to collision detection, choose whether to turn on collision detection by setting open to Y or N; limitT is the difference detection threshold between the calculated torque and the feedback torque, and the unit is NM; load is the load weight attached to the end of the robotic arm, in kg, this value is independent of the open setting, and will always participate in the dynamic calculation of the end load.
 
 There are many subfolders in folder z1_sdk, and their functions are:

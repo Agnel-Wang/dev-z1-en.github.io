@@ -4,6 +4,12 @@ sort: 8
 
 # Log Update
 
++ 2022.11.11
+
+    1. Reduce the y-axis motion velocity in the singular region under Cartesian space.
+    2. Reduce joint5 range of motion.
+    3. Move the config.xml to the config file and remove the config settings from it.
+
 + 2022.10.21
 
     1. Remove the gripper item from the file Config.xml, and instead detect the presence or absence of gripper according to the number of motors; add collision terms, including whether to turn on collision detection, limit torque and end load. The end load is attached to the end joint, which affects the calculation of the feedforward torque, and it is always in effect.
