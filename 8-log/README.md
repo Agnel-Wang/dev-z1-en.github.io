@@ -7,8 +7,7 @@ sort: 8
 + 2022.11.11
 
     1. Reduce the y-axis motion velocity in the singular region under Cartesian space.
-    2. Reduce joint5 range of motion.
-    3. Move the config.xml to the config file and remove the config settings from it.
+    2. Move the config.xml to the config file and remove the config settings from it.
 
 + 2022.10.21
 
