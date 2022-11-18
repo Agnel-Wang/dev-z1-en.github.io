@@ -42,18 +42,18 @@ Robotic arm users should fully understand the risks, must read this manual caref
 
 Z1 can realize various upper-level control modes such as joint space control, Cartesian space control, etc. It can also realize the low-level control of the underlying joint motors, based on which users can develop their own control algorithms. To achieve the above control relies on the use of the robotic arm SDK. There are currently two ways to control the robotic arm through the robotic arm SDK.
 
-+ **Code Control** 
++ **Code Control**
 You can write C++ programs to call the robotic arm development interface to control the robotic arm.
-+ **Keyboard control** 
++ **Keyboard control**
 The robotic arm can be controlled directly from the keyboard.
 
 The robotic arm SDK also supports physical control and simulation control, where the simulator used for simulation control is Gazebo.
 
 ## File Structure
 
-The files about the robotic arm SDK are stored in the z1_sdk.20xx.x.x.zip folder, where 20xx.x.x is the release date of this SDK.
 
-The package contains three sub-files: z1_controller, z1_sdk and z1_ws.
+Z1 package contains three files。
+Download：[![file](https://img.shields.io/badge/Z1-controller-green)](https://github.com/unitreerobotics/z1_controller) [![file](https://img.shields.io/badge/Z1-sdk-green)](https://github.com/unitreerobotics/z1_sdk) [![file](https://img.shields.io/badge/Z1-ros-green)](https://github.com/unitreerobotics/z1_ros)
 
 + z1_controller
 
@@ -63,9 +63,9 @@ This folder contains the control implementation part of the robot arm.
 
 This folder contains the interface to the control program.
 
-+ z1_ws
++ z1_ros
 
-This folder belongs to a workspace of ROS, where the folder z1_ws/src/z1_ros contains the files related to the ROS simulation model.
+This folder contains the files related to the ROS simulation model.
 
 <center>
 <img src="img/relation.png" style="zoom:100%" alt=" 图片不见了。。。 "/>

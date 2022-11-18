@@ -10,7 +10,7 @@ Both the robotic arm SDK and the robotic arm controller are based on Ubuntu 18.0
 
 In addition, the robotic arm SDK and robotic arm controller also rely on many third-party tools, and users need to install these third-party tools before using them.
 
-For the convenience, we also provide two library packages, **Eigen and RDBL**, in directory z1_sdk/ thirdparty/.After decompression, you can install directly according to the following steps. 
+For the convenience, we also provide **Eigen** library packages, in directory z1_sdk/ thirdparty/. After decompression, you can install directly according to the following steps.
 
 ## Dependency Library Installation
 
@@ -34,7 +34,7 @@ cmake --version                             # check cmake version
 sudo apt install cmake                      # install cmake
 ```
 
-+ GCC(GLIBCXX 3.4.22 or higher)
+<!-- + GCC(GLIBCXX 3.4.22 or higher)
 
 you can check the current version information of GLIBCXX with the following command.
 
@@ -49,7 +49,7 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 sudo apt-get install gcc-4.9
 sudo apt-get upgrade libstdc++6
-```
+``` -->
 
 + Eigen (version 3.3.9)
 
