@@ -110,6 +110,17 @@ And the function is equivalent to pressing `2` key when control by keyboard.
 
 ③ armCtrlInCartesian()
 
+In cartesian space, the user was originally required to control the sptial velocity $$V = [\omega \quad v]'$$, that is, `unitreeArm.twist`  to control the robot, and the function was encapsulated on this basis. Then the user can directly control the direction in which the end of the robot was desired.
+
+The following command calculation will be performed directly in the function:
+
+$$T_{\Delta} = directions * speed$$  
+$$T_k = T_{\Delta} + T_{k-1}$$  
+$$[\omega] = \log{(R_{k-1}^T R_k)}$$  
+$$v=p_\Delta$$  
+
+And the function is equivalent to pressing `3` key when control by keyboard.
+
 ### 2.2.2 highcmd_development
 
 If user wants to control the robot through the planning trajectory, they can view this example.

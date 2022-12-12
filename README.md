@@ -17,19 +17,17 @@ The robotic arm SDK also supports physical control and simulation control, where
 
 ## File Structure
 
+Z1 package contains three files(Attached download address)。
 
-Z1 package contains three files。
-Download：[![file](https://img.shields.io/badge/Z1-controller-green)](https://github.com/unitreerobotics/z1_controller) [![file](https://img.shields.io/badge/Z1-sdk-green)](https://github.com/unitreerobotics/z1_sdk) [![file](https://img.shields.io/badge/Z1-ros-green)](https://github.com/unitreerobotics/z1_ros)
-
-+ z1_controller
++ [z1_controller](https://github.com/unitreerobotics/z1_controller)
 
 This folder contains the control implementation part of the robot arm.
 
-+ z1_sdk
++ [z1_sdk](https://github.com/unitreerobotics/z1_sdk)
 
 This folder contains the interface to the control program.
 
-+ z1_ros
++ [unitree_ros](https://github.com/unitreerobotics/unitree_ros)
 
 This folder contains the files related to the ROS simulation model.
 
@@ -50,4 +48,4 @@ Therefore, because of the above-mentioned relationship between the three, the ac
 
 2. Start `z1_ctrl`
 
-3. Start `unitree_arm_sdk`
+3. Start `z1_sdk`
