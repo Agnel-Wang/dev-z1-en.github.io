@@ -114,6 +114,8 @@ In cartesian space, the user was originally required to control the sptial veloc
 
 The following command calculation will be performed directly in the function:
 
+where T is a homogeneous transformation matrix composed of R and p, and [ω] is the antisymmetric matrix of ω.
+
 $$T_{\Delta} = directions * speed$$  
 $$T_k = T_{\Delta} + T_{k-1}$$  
 $$[\omega] = \log{(R_{k-1}^T R_k)}$$  
