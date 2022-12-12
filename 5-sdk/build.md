@@ -34,23 +34,6 @@ cmake --version                             # check cmake version
 sudo apt install cmake                      # install cmake
 ```
 
-<!-- + GCC(GLIBCXX 3.4.22 or higher)
-
-you can check the current version information of GLIBCXX with the following command.
-
-```shell
-strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
-```
-
-upgrade
-
-```shell
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt-get update
-sudo apt-get install gcc-4.9
-sudo apt-get upgrade libstdc++6
-``` -->
-
 + Eigen (version 3.3.9)
 
 If old version Eigen has been installed, uninstall it first. If not, proceed to the next step.
@@ -74,31 +57,6 @@ sudo make install
 sudo ln -s /usr/local/include/eigen3  /usr/include/eigen3
 sudo ln -s /usr/local/include/eigen3/Eigen  /usr/local/include/Eigen
 ```
-
-<!-- + LCM (1.4.0版本)
-
-```shell
-cd lcm-1.4.0
-mkdir build && cd build
-cmake ..
-make
-sudo make install
-``` -->
-
-<!-- + RBDL (Version 2.6.0, No required after version 2022.10.21)
-
-```shell
-cd rbdl-2.6.0
-mkdir build
-cd build
-cmake -D CMAKE_BUILD_TYPE=release ..
-sudo make install
-
-sudo su    (input password)
-echo /usr/local/lib >> /etc/ld.so.conf                      # set path
-ldconfig
-exit                                                        # Exit super administrator mode
-``` -->
 
 ## ROS(melodic) Installation
 
@@ -134,9 +92,3 @@ netmask 255.255.255.0
 ```
 
 In this case, you can run the ping 192.168.123.110 command to check whether the connection with the robotic arm is normal.
-
-### Change of Robotic Arm Control Program IP.
-
-If the user changes the IP of the robotic arm control board, for example, changing the original 192.168.123.110 to 192.168.123.111, the IP address of the control program z1_crtl must be the same as the new one.
-
-Open z1_controller/config.xml file and change the IP.

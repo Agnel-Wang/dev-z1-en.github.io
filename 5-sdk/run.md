@@ -6,18 +6,20 @@ sort: 2
 
 ## ROS Simulation
 
-**①** First set z1_ws as the ROS workspace, we have placed the relevant files required by ROS in folder z1_ws/src/z1_ros (open the first terminal).
+**①** Set ros workspace
 
-If the user is not familiar with the path setting, please move folder z1_ws folder to /home/username/ directory.
+If the user is not familiar with the path setting, please create the folder named `unitree_ros/src` and move folder `unitree_ros` folder in it, which shoud be `~/unitree_ros/src/unitree_ros`.
+Then download the folder [unitree_legged_msgs](https://github.com/unitreerobotics/unitree_ros_to_real), move it to `~/unitree_ros/src/unitree_ros/`.
+
 
 ```shell
-cd ~/z1_ws                                                #Open the folder
-catkin_make                                               #Initialize ROS workspace
-echo “source ~/z1_ws/devel/setup.bash”>>~/.bashrc         #Add the ros path to the environment variables
-source ~/.bashrc                                          #Update environment variables
+cd ~/unitree_ros                                                        #Open the folder
+catkin_make                                                             #Initialize ROS workspace
+echo “source ~/unitree_ros/src/unitree_ros/devel/setup.bash”>>~/.bashrc #Add the ros path to the environment variables
+source ~/.bashrc                                                        #Update environment variables
 ```
 
-Run `roslaunch z1_gazebo z1.launch`,If successfully configured, the simulation interface of Gazebo will be displayed.
+Run `roslaunch z1_gazebo z1.launch`, If successfully configured, the simulation interface of Gazebo will be displayed.
 
 ```text
 Tips：After entering `RosLaunch Z`, press tap to check whether the terminal will automatically complete. If rosLaunch Z1_ is successfully programmed, that means the path setting is successful.
@@ -61,14 +63,12 @@ There are two executable files generated, example_lowcmd_send and bigdemo.
 This time we run bigdemo.
 
 ```shell
-./bigdemo
+./highcmd_basic
 ```
-
-You can also perform keyboard control directly by `./z1_ctrl k`.
 
 + Keyboard Operation:The specific keys will be introduced in state machine section.
 
-Press key 0 on the keyboard, the robotic arm will enter the label operation state machine. Input forward at the prompt, then click enter, the robotic arm will run forward. Press ~ again, return to the origin. After returning to the origin, it will automatically enter the joint control mode. At this time, the rotation of the robotic arm can be controlled by **long press** according to the following keys.
+First press `2` on the keyboard and then press key `0`, the robotic arm will enter the label operation state machine. Input forward at the prompt, then click enter, the robotic arm will run forward. Press `~` again, return to the origin. After returning to the origin, it will automatically enter the joint control mode. At this time, the rotation of the robotic arm can be controlled by **long press** according to the following keys.
 
 <table border="1">
     <tr>
@@ -104,6 +104,6 @@ set(COMMUNICATION UDP)                         #UDP
 ```
 
 **③** Run `./z1_ctrl`
-**④** Run `./example_keyboard_send`
+**④** Run `./highcmd_basic`
 
-The operation here is consistent with the simulation. Now, we have learned how to control the robotic arm. More operation methods will be introduced in the [basic concept](../1-basic/sdk.md) section.
+The operation here is consistent with the simulation. Now, we have learned how to control the robotic arm. More operation methods will be introduced in the [basic concept](../2-basic/sdk.md) section.

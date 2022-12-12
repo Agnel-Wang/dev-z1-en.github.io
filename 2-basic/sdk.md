@@ -4,82 +4,128 @@ sort: 1
 
 # Introduction to Robotic Arm SDK
 
-## File Structure
+Three files are provided for users to use z1 robot， which are `z1_controller`, `z1_sdk` and `unitree_ros`.
 
-All files about robotic arm SDK will be stored in a compressed package named z1_sdk_20xx.x.x.zip, Z1_sdk is the name of the SDK, and 20xx.x.x is the release date of SDK. There are three subfolders in the compressed package: z1_controller, z1_sdk and z1_ws, and z1_ws belongs to a workspace of the ROS system. Z1_controller stores the source codes which directly controls the robotic arm, the codes are packaged as a library and invisible to the user. Z1_sdk is a folder about the robotic arm named SDK unitree_arm_sdk, which contains the interfaces used for robotic arm control.
++ z1_controller: which stroes the code to control the z1 robot directly.
++ z1_sdk: which contains the interfaces used for z1 robot control.
++ unitree_ros: which contains the unitree products, includes Go1, A1, Aliengo , Laikago and z1 simulation files.
 
-In folder z1_controller, the user only needs to focus on file CMakeLists.txt (select ROS, UDP as required) and config/config.xml.
+## 1. z1_controller
 
-There are two configurations in config.xml, which read only once when z1_ctrl starts:
+Apart form the files mentioned below, users do not need to view other files under this folder.
+
+### 1.1 build/z1_ctrl
+
+For the first time, users need to create "build" file and compile the program, and the resulting executable program is named `z1_ctrl`.
+
++ execute `./z1_ctrl -v` to check the version information
++ execute `./z1_ctrl k` to control the robot by keyboard
++ execute `./z1_ctrl` to control the robot by SDK
+
+### 1.2 CMakeLists.txt
+
+Choose to control the real robot or simulate by selecting UDP or ROS.
+
+```cmake
+Line8: set(COMMUNICATION UDP)
+Line9: #set(COMMUNICATION ROS)
+```
+
+### 1.3 unitreeArmTools.py
+
+This file is used to change the lower machine IP address (default: 192.168.123.110)
+
+Use a cabek to connect the robot (**which needs to connect to the right backup network port**) and PC, then execute `python3 unitreeArmTools.py` and enter command as prompted.
+
+### 1.4 config/config.xml
+
+This file is read only once when `z1_ctrl` starts.
 
 1. IP & Port
-    Set the IP of the lower computer, and port is bound by different z1_ctrl program
+
+   **IP**：This refers to the robot lower machine IP address changed by `unitreeArmTools`, and when it has been changed, this parameter should be changed at the same time so that the `z1_ctrl` and the robot can communicate normally.
+
+   **Port**：The port of the robot is **8880**, and this parameter is to change the native port bound when the PC performs the `z1_Ctrl`, the defalult is **8881**, which is used to control multiple robots on the same PC.
 
 2. collision
-    Contain settings related to collision detection, choose whether to turn on collision detection by setting open to Y or N; limitT is the difference detection threshold between the calculated torque and the feedback torque, and the unit is NM; load is the load weight attached to the end of the robotic arm, in kg, this value is independent of the open setting, and will always participate in the dynamic calculation of the end load.
 
-There are many subfolders in folder z1_sdk, and their functions are:
+    settings for collision check
 
-+ Build:Folder where executable and intermediate files are stored when compiling for `unitree_arm_sdk`. (It is not included in the compressed package and needs to be created by the user.)
-+ CMakeLists.txt:A file that guides `unitree_arm_SDK` compilation. If you write your own executable file, add a path to it.
-+ examples:Source code files which stores the robotic arm controlling examples.
-+ include:The header file that stores the `unitree_arm_SDK` source code. Users only need to include the unitree_arm_sdk/unitree_arm_sdk.h file in the source file.
-+ control:Contain CtrlComponents and unitreeArm, which contains the methods that engineers encapsulate for users to easily call the robotic arm API. This class is closely related to the examples in the demo folder. Users can also use this type of code to write their own classes.
+    **open**: Whether open collision check by selecting Y or N
 
-## examples
+    **limitT**: The difference between torque and feedback torque , which calculates for collision check
 
-We have provided several examples to facilitate the use SDK. Please see the unitreeArm class comment for details.
+    **load**: The end load is attached to the end joint, which affects the calculation of the feedforward torque, and it is always in effect.
 
-### 1. example_lowcmd_send
+### 1.5 config/saveArmStates.csv
 
-This file shows how to send **PD** parameters directly to the motor. The simulated parameters differ from the actual parameters.
+This file is to save `label` for `labelRun()` and `labelSave()`, which represents the joint angles at that position.
 
-**Note**: Kp send to motor is kp = kp \* 25.6; and Kd send to motor is kd = kd \* 0.0128
+## 2. z1_sdk
 
-### 3. bigDemo
+### 2.1 include
 
-By inheriting from the unitreeArm class, bigDemo writes an example of calling a member function in the class.
+The forlder holds the header files of `unitree_arm_sdk`, and users can view the comments in it to understand what function does.
 
-Four functions are defined in the Z1 ARM class to demonstrate each of the four ways to control the robot arm using upper-level commands.
+#### 2.1.1 unitree_arm_sdk/control
 
-```cpp
-    void armCtrlByFSM();
-    void armCtrlByTraj();
-    void armCtrlTrackInJointCtrl();
-    void armCtrlTrackInCartesian();
-```
+There are two files in it: `ctrlComponents.h` and `unitreeArm.h`.
 
-① void armCtrlByFSM()
+`ctrlComponents.h` mainly puts all the control parameters in a class for easy calling. 
 
-*armCtrlByFSM* implements specific application  by switching the state machine.
+`unitreeArm.h` encapsulates all interfaces for controlling the robot.
 
-For example, through the *MoveJ(posture)* function, you can automatically switch to the *MoveJ* state machine and run to the specific posture.
+#### 2.1.2 unitree_arm_sdk/model
 
-Note: In this way, *MoveJ*、*MoveL* and *MoveC* do not have speed definition interface.
+This folder contains the armModel class, which contais functions suchas forward and inverse kinematics, inverse dynamics, and spatial Jacobial calculations of the robot.
 
-② void armCtrlByTraj()
+The user can use these functions by calling `_ctrlComp->armModel` in the class `unitreeArm`.
 
-This function involves two state machines, **State_Trajectory** and **State_SetTraj**.
+## 2.2 examples
 
-By switching to State_SetTraj (which must be in the State_JOINTCTRL) via the *setTraj()* function automatically, and recording the currently TrajCmd,
-(trajOrder must be guaranteed to be continuous), where the start point of the trajectory is the end point of the previous trajectory. All trajectories will be recorded while exiting the State_SETTRAJ, and then you can enter the State_Trajectory to execute the recorded trajectories in turn.
+This folder contains three examples for the use of the `unitree_arm_sdk`.
 
-If a new trajectory is not set by State_SetTraj during this process, you can enter the State_Trajectory again to execute the recorded trajectory.
+### 2.2.1 highcmd_basic
 
-```text
-Note: Since the state machine in the SDK is switched by simulating the keyboard, 
-the two state machines also have actual corresponding keys in the keyboard, which are "-" and "l", respectively.
-But in fact, it is impossible to do anything simply through the keyboard. 
-However, if the user presses the minus "-" key in the keyboard, the robot arm will run a default demonstration action.
+If the user just wants to a simple understanding of how to control the robot, they can check out `highcmd_basic` file.
 
-At the same time, if the bigdemo is running at State_Trajectory, given the command has been sent, 
-the z1_ctrl will still complete the execution of the current trajectory even if the bigdemo program has been terminated.
-```
+The example contains three methods for controling the robot.
 
-③ void armCtrlTrackInJointCtrl()
+① armCtrlByFSM()
 
-This function runs under the State_JOINTCTRL, there is a flag named "track", under normal circumstances the value is false, you can press keys to control the movement of the robotic arm through keyboard control method, but can not be operated during programming.  When flag track is set to true, the robotic arm runs with the q and qd commands in jointCmd until flag track is set to false again.
+The function controls the robot by calling the methods in the class `unitreeArm` directly, such as `MoveJ()`, `MoveL()`, `MoveC()`, `backToStart()`.
 
-④ void armCtrlTrackInCartesian()
+The function work as if the user use keyboard to control the robot with the './z1_ctrl k' command.
 
-This function runs under the State_Cartesian, which is same as armCtrlTrackInJointCtrl(), but tracking commands change from jointCmd.q and jointDmd.qd to trajCmd.posture[0].
+② armCtrlInJointCtrl()
+
+The function is equivalen to further encapsulation on the basis of `highcmd_decelopment`. The user is only to control the direction of joint rotation instead of entering joint command $$q \And \dot{q}$$.
+
+The following command calculation will be performed directlu in the function:
+
+$$\dot{q} = directions*\omega$$  
+$$q_{k} = q_{k-1} + \dot{q}*\delta t$$
+
+And the function is equivalent to pressing `2` key when control by keyboard.
+
+③ armCtrlInCartesian()
+
+### 2.2.2 highcmd_development
+
+If user wants to control the robot through the planning trajectory, they can view this example.
+
+This example writes a joint trajectory class `JointTraj`, where the `setJointTraj` and `setGripper` functions set the rajectory parameters (defined by the quintic polynomial) according to the given starting and the ending postion and speed, and `getJointCmd` will find the currently planned joint commands $$q$$ ad joint angulat velocity $$\dot{q}$$ according the execution time under different time parameter $$s \in [0, 1]$$
+
+### 2.2.3 lowcmd_development
+
+If the user wants to control the $$ q, \dot{q}, \tau_f, k_p, k_d $$ parameters of the motor directly, they can view this example.
+
+This file shows how to send PD parameters directly to the motor. Users can control the motor by writing their own program to achieve independment development. The final output torque of the motor is as follows:
+
+$$ \tau = k_p * 25.6 * (q_d - q) + k_d * 0.0128 * (\dot{q_d} - \dot{q}) + \tau_f$$
+
+25.6 and 0.0128 are the scaling multiples in the communication protocol with the motor.
+
+The `sendRecvThread` under `CtrlComponents` is a function that calls `unitreeArm` for instruction operations, such as running to forward as an instruction
+
+And when running lowcmd, it is recommended to use its own defined thread, execute the `run` function, the run function starts to determine the command that needs to be sent to the motor through calculation, and finally calls sendRecv to send UDP packets.

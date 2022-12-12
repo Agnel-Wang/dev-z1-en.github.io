@@ -32,7 +32,7 @@ The movement range of each joint please see below.
 </table>
 </center>
 
-The actual calculation uses radian system, and other information such as coordinate axes and inertia matrix are described in the document ~/z1_ws/ SRC /z1_ros/z1_description/xacro.
+The actual calculation uses radian system, and other information such as coordinate axes and inertia matrix are described in the document `unitree_ros/robots/z1_description/xacro`.
 
 ## Installation of Robotic Arm
 
@@ -118,3 +118,15 @@ Before controlling the robotic arm, it is necessary to understand the joint defi
 
 其中手爪装载平面（即J6末端平面）的绝对初始位置为[0,049, 0, 0.1605]
 Unitree_gripper中心相对于装载平面的位置为[0.0382, 0, 0]，即config.xml里的endPosLocal参数
+
+## 末端关节法兰
+
+<center>
+<img src="../img/end flange.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<br>
+<div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 1px;">z1机械臂末端法兰示意图</div>
+</center>
+<br>

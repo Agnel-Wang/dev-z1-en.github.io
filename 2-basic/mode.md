@@ -3,7 +3,7 @@ sort: 2
 ---
 # Control Mode
 
-z1 robotic arm provides a variety of high level control modes, such as Joint Space Control, Cartesian Space Control,MOVEJ, MOVEL, MOVEC, etc. Understanding these control modes enable users to better know how to send commands to`z1_ws`to control the movement of the robotic arm.
+z1 robotic arm provides a variety of high level control modes, such as Joint Space Control, Cartesian Space Control,MOVEJ, MOVEL, MOVEC, etc. Understanding these control modes enable users to better know how to send commands to control the movement of the robotic arm.
 
 ## Joint Space Control
 

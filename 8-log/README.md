@@ -4,6 +4,13 @@ sort: 8
 
 # Log Update
 
++ 2.2.0
+
+    1. change control variable `endPosture` in Cartesian Space to `spatial twist`
+    2. add functions `jointCtrlCmd()` and `cartesianCtrlCmd()` in `unitreeArm` to simplify use
+    3. add function `setWait()` to cancel a loop wait which executes by default
+    4. add the file `unitreeArmTools.py` to the folder z1_controller for changing the robot IP
+
 + 2022.11.11
 
     1. Reduce the y-axis motion velocity in the singular region under Cartesian space.
