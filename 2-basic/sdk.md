@@ -116,7 +116,7 @@ The following command calculation will be performed directly in the function:
 
 where T is a homogeneous transformation matrix composed of R and p, and [ω] is the antisymmetric matrix of ω.
 
-$$T_{\Delta} = directions * speed$$  
+$$ posture_k = posture_{k-1}+posture_{\Delta}$$  
 $$T_k = T_{\Delta} + T_{k-1}$$  
 $$[\omega] = \log{(R_{k-1}^T R_k)}$$  
 $$v=p_\Delta$$  
