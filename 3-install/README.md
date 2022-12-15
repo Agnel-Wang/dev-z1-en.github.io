@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 3
 ---
 
 # Z1 Robotic Arm Installation
