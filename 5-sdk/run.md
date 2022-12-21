@@ -8,18 +8,18 @@ sort: 2
 
 **①** Set ros workspace
 
-If the user is not familiar with the path setting, please create the folder named `unitree_ros/src` and move folder `unitree_ros` folder in it, which shoud be `~/unitree_ros/src/unitree_ros`.
-Then download the folder [unitree_legged_msgs](https://github.com/unitreerobotics/unitree_ros_to_real), move it to `~/unitree_ros/src/unitree_ros/`.
+If the user is not familiar with the path setting, please create the folder named `unitree_ws/src` and move folder `unitree_ros` folder in it, which shoud be `~/unitree_ws/src/unitree_ros`.
+Then download the folder [unitree_legged_msgs](https://github.com/unitreerobotics/unitree_ros_to_real), move it to `~/unitree_ws/src/`.
 
 
 ```shell
-cd ~/unitree_ros                                                        #Open the folder
+cd ~/unitree_ws                                                         #Open the folder
 catkin_make                                                             #Initialize ROS workspace
 echo “source ~/unitree_ros/src/unitree_ros/devel/setup.bash”>>~/.bashrc #Add the ros path to the environment variables
 source ~/.bashrc                                                        #Update environment variables
 ```
 
-Run `roslaunch z1_gazebo z1.launch`, If successfully configured, the simulation interface of Gazebo will be displayed.
+Run `roslaunch unitree_gazebo z1.launch`, If successfully configured, the simulation interface of Gazebo will be displayed.
 
 ```text
 Tips：After entering `RosLaunch Z`, press tap to check whether the terminal will automatically complete. If rosLaunch Z1_ is successfully programmed, that means the path setting is successful.
