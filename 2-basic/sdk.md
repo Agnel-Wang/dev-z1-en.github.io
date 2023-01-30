@@ -127,7 +127,10 @@ And the function is equivalent to pressing `3` key when control by keyboard.
 
 If user wants to control the robot through the planning trajectory, they can view this example.
 
-This example writes a joint trajectory class `JointTraj`, where the `setJointTraj` and `setGripper` functions set the rajectory parameters (defined by the quintic polynomial) according to the given starting and the ending postion and speed, and `getJointCmd` will find the currently planned joint commands $$q$$ ad joint angulat velocity $$\dot{q}$$ according the execution time under different time parameter $$s \in [0, 1]$$
+When `sendRecvThread->start()` executes, the thread executes `arm.sendRecv()` at a frequency of 500HZ.
+
+When controlling under the joint space, this function will send `q, qd, gripperQ, gripperW` in unitreeArm to the z1_controller,
+When controlling under the cartesian space, the function will send `twist` in unitreeArm to the z1_controller, and the user only needs to keep changing these parameters to control the robotic arm. You can also write your own thread to call unitreeArm.sendRecv().
 
 ### 2.2.3 lowcmd_development
 
@@ -142,3 +145,17 @@ $$ \tau = k_p * 25.6 * (q_d - q) + k_d * 0.0128 * (\dot{q_d} - \dot{q}) + \tau_f
 The `sendRecvThread` under `CtrlComponents` is a function that calls `unitreeArm` for instruction operations, such as running to forward as an instruction
 
 And when running lowcmd, it is recommended to use its own defined thread, execute the `run` function, the run function starts to determine the command that needs to be sent to the motor through calculation, and finally calls sendRecv to send UDP packets.
+
+## 2.3 examples_py
+
+This contains the Python version interface of the z1 SDK.
+
+The interface is designed in the `arm_python_interface.cpp` file, and the functions and variables already included in it can be used directly in Python, and users can also change them by themselves, see for details [pybind11 documentation](https://pybind11.readthedocs.io/en/stable/)
+
+**invoke method**:
+
+There will be a library named `unitree_arm_interface` in `z1_sdk/lib` after compilation is complete.
+
+Execute `./z1_ctrl` in the first terminal.
+
+Open a second terminal in the `z1_sdk/examples_py` directory to execute `python3 example_highcmd.py`
