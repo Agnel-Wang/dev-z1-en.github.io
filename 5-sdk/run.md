@@ -15,7 +15,7 @@ Then download the folder [unitree_legged_msgs](https://github.com/unitreerobotic
 ```shell
 cd ~/unitree_ws                                                         #Open the folder
 catkin_make                                                             #Initialize ROS workspace
-echo “source ~/unitree_ros/src/unitree_ros/devel/setup.bash”>>~/.bashrc #Add the ros path to the environment variables
+echo “source ~/unitree_ros/devel/setup.bash”>>~/.bashrc #Add the ros path to the environment variables
 source ~/.bashrc                                                        #Update environment variables
 ```
 
