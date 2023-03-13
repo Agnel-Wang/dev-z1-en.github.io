@@ -9,7 +9,7 @@ sort: 3
 |DOF|6 rotation |
 |Weight|4.1kg|
 |Payload|3-5kg|
-|Maximum reach|700mm|
+|Maximum reach|740mm|
 |Repeatability|~0.1mm|
 |Power supply|24V >20A|
 |Communication|Ethenet|
