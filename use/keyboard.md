@@ -60,12 +60,12 @@ It should be noted again that all joint coordinate systems are right-handed, and
 </table>
 
 <center>
-<img src="../img/gazebo_ctrl4.gif" style="zoom:70%" alt=" 图片不见了。。。 "/>
+<img src="../img/z1_arm_coordinate.png" style="zoom:70%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">Joint Space Control Demonstration</div>
+padding: 1px;">Joint Serial Number and Positive Direction of Joint Rotation Definition</div>
 </center>
 <br>
 
@@ -86,12 +86,12 @@ In Cartesian space control, the movement speed of expected place and posture for
 </table>
 
 <center>
-<img src="../img/gazebo_cartesian1.gif" style="zoom:70%" alt=" 图片不见了。。。 "/>
+<img src="../img/cartesian_example.jpg" style="zoom:70%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
 color: #999;
-padding: 1px;">Cartesian Space Control Demonstration</div>
+padding: 1px;">Cartesian Space Control</div>
 </center>
 <br>
 
@@ -121,9 +121,9 @@ Example:
 
 4. MOVEC
 
-    Press 6, input two poses, the intermediate pose, and the final pose. 
+    Press 6, input two poses, the intermediate pose, and the final pose.
 
-    Input 0 0.2 0 0.4 0 0.3 and then click Enter, then input 0 -0.1 0.5 0.5 0.25 0.44 and click Enter twice. The sample program details, please find in the bigDemo example.
+    Input 0 0 0 0.45 0 0.4 and then click Enter, then input 0 0 0 0.45 0.2 0.2 and click Enter twice. The sample program details, please find in the bigDemo example.
 
 ## TEACH
 

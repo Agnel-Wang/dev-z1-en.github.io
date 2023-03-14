@@ -32,7 +32,7 @@ padding: 1px;">The movement range of Z1 robotic arm</div>
 ### Joint coordinate
 
 <center>
-<img src="../img/z1_arm_coordinate.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/z1_arm_coordinate.png" style="zoom:70%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
@@ -57,7 +57,7 @@ and **key -** represents the negative direction.
 ### Cartesian coordinate
 
 <center>
-<img src="../img/cartesian_example.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/cartesian_example.jpg" style="zoom:70%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;

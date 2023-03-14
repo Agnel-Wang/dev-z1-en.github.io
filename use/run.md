@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 2
 ---
 
 # SDK Operation
@@ -106,3 +106,35 @@ set(COMMUNICATION UDP)                         #UDP
 **④** Run `./highcmd_basic`
 
 The operation here is consistent with the simulation. Now, we have learned how to control the robotic arm. More operation methods will be introduced in the [basic concept](../2-basic/sdk.md) section.
+
+## Multiple robots control
+
+**<1>** open the directory z1_controller, set `Communication` in CMakeLists.txt to **UDP**,
+
+copy the directory z1_controller, named as z1_controller_111
+
+**<2>** open the directory z1_controller_111
+
+**①** main.cpp
+
+set UDP port (Line51) as shown in the following example:
+
+```cpp
+ctrlComp->cmdPanel = new ARMSDK(events, emptyAction, "127.0.0.1", 8074, 8073, 0.002);
+```
+
+**②** config.xml
+
+set `IP` to "192.168.123.111", set `Port` to 8882
+
+**③** unitreeArmTools.py
+
+set the second robotic arm IP to 192.168.123.111.
+
+**<3>** As described previously, proceed as follows:
+
+1. execute z1_ctrl in **z1_controller** at the first terminal, which communicates with the robotic arm 110.
+2. execute z1_ctrl in **z1_contrller_111** at the second terminal, which communicates with the robotic arm 111.
+3. execute lowcmd_multirobots in **z1_sdk** at the third terminal.
+
+And then we can see that the Joint1 of both robotic arm has turned at an angle.

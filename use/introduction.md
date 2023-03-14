@@ -1,5 +1,5 @@
 ---
-sort: 1
+sort: 3
 ---
 
 # Introduction to SDK
@@ -145,6 +145,12 @@ $$ \tau = k_p * 25.6 * (q_d - q) + k_d * 0.0128 * (\dot{q_d} - \dot{q}) + \tau_f
 The `sendRecvThread` under `CtrlComponents` is a function that calls `unitreeArm` for instruction operations, such as running to forward as an instruction
 
 And when running lowcmd, it is recommended to use its own defined thread, execute the `run` function, the run function starts to determine the command that needs to be sent to the motor through calculation, and finally calls sendRecv to send UDP packets.
+
+### 2.2.4 lowcmd_multirobots
+
+This program provides example of controlling munltiple robotic arms.
+
+For more information, see [SDK run](run.md)
 
 ## 2.3 examples_py
 
