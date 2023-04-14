@@ -24,7 +24,7 @@ When B1 robot stops, press **L1+L2** button at the same time to switch to Z1 rob
 
 
 <center>
-<img src="../img/joystick_joint contrOl.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/joystick_joint control.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
@@ -38,7 +38,7 @@ padding: 1px;">Joint Space Control</div>
 When B1 robot stops, press **L1+L2** button at the same time to switch to Z1 robot arm to be controlled, and B1 robot will no longer move. Then, or when Z1 robot arm is in the joint space control mode, press **R1** button to enter the cartesian space control mode as shown in the figure below. After the movement is finished, if you want the Z1 robot arm to keep the current attitude still, you can press **L2+R2** at the same time, and the robot arm will no longer receive the control information from the joystick. Then you can press **L1+L2** to control B1 robot while keeping the Z1 robot arm in the current posture. When B1 robot stops, press **L1+L2** button at the same time to switch to Z1 robot arm to be controlled, and B1 robot will no longer move. Then press **R2 or R1** button to continue to control the Z1 robot arm. When Z1 robot arm finish the movement, press **SELECT** to return it to its original position. 
 
 <center>
-<img src="../img/joystick_cartesian controL.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
+<img src="../img/joystick_cartesian control.png" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
 display: inline-block;
@@ -47,7 +47,7 @@ padding: 1px;">Cartesian Space Control</div>
 </center>
 <br>
 
-<center>
+<!-- <center>
 <img src="../img/cartesian_example.jpg" style="zoom:100%" alt=" 图片不见了。。。 "/>
 <br>
 <div style="color:orange; border-bottom: 0.1px solid #d9d9d9;
@@ -55,7 +55,7 @@ display: inline-block;
 color: #999;
 padding: 1px;">Robotic arm tool coordinate system</div>
 </center>
-<br>
+<br> -->
 
 ### Fixed Trajectory Motion
 
