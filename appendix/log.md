@@ -4,6 +4,10 @@ sort: 2
 
 # Log Update
 
++ 2.2.5
+
+    1. support for `aarch64`
+
 + 2.2.0
 
     1. change control variable `endPosture` in Cartesian Space to `spatial twist`
