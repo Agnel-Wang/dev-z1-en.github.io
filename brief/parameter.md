@@ -8,7 +8,7 @@ sort: 3
 |:-:|:-:|
 |DOF|6 rotation |
 |Weight|4.1kg|
-|Payload|3-5kg|
+|Payload|≥3kg|
 |Maximum reach|740mm|
 |Repeatability|~0.1mm|
 |Power supply|24V >20A|
