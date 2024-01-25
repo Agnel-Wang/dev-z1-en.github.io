@@ -22,14 +22,9 @@ For the first time, users need to create "build" file and compile the program, a
 + execute `./z1_ctrl k` to control the robot by keyboard
 + execute `./z1_ctrl` to control the robot by SDK
 
-### 1.2 CMakeLists.txt
+### 1.2 build/sim_ctrl
 
-Choose to control the real robot or simulate by selecting UDP or ROS.
-
-```cmake
-Line8: set(COMMUNICATION UDP)
-Line9: #set(COMMUNICATION ROS)
-```
+If gazebo has been installed then there will be a executable program named `sim_ctlr`, which is used to communicate with unitree_ros. Other than that, it has no different than `z1_ctrl`.
 
 ### 1.3 unitreeArmTools.py
 
